@@ -662,7 +662,8 @@ void ListingDocumentType::removeSorted(address_t address, u32 type)
         if(type == ListingItem::FunctionItem)
         {
             auto it = Listing::binarySearch(&m_functions, address, type);
-            m_functions.erase(it);
+            if (it != m_functions.end())
+              m_functions.erase(it);
         }
 
         this->erase(it);
